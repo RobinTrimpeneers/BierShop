@@ -1,4 +1,5 @@
 ﻿using BierShop.Models;
+using Microsoft.AspNetCore.WebSockets;
 using MySql.Data.MySqlClient;
 namespace BierShop.Persistence
 {
@@ -70,7 +71,8 @@ namespace BierShop.Persistence
 
             MySqlConnection conn = new MySqlConnection(connstring);
             conn.Open();
-            string qry = "insert into tblwinkelmandje (klantID, productID,Aantal)";
+            string qry = "insert into tblwinkelmandje (klantID, productID,Aantal)" +
+                " values(" + winkelmandje.KlantID +","+ winkelmandje.ProductID+","+ winkelmandje.aantal+")";
 
         }
     }

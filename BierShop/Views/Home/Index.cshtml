@@ -1,0 +1,46 @@
+﻿@model ProductRepository;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Biershop.com</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body class="m-3">
+    <form asp-action="Index" asp-controller="Home">
+        <h2>Biershop.com - catalogus</h2>
+        <h3>De site voor al uw biernodigheden</h3>
+        <table class="table">
+            <tr>
+                <td>Artnummer</td>
+                <td>Naam</td>
+                <td>Foto</td>
+                <td>Verkoopprijs</td>
+                <td>Voorraad</td>
+                <td></td>
+            </tr>
+            @foreach(var x in Model.Producten)
+            {
+                <tr>
+                    <td>@x.ProductID</td>
+                    <td>@x.Naam</td>
+                    <td><img src="@Url.Content("~/Producten/" + x.foto)"></td>
+                    <td>@x.Verkoopprijs</td>
+                    <td>@x.voorraad</td>
+                    <td><a asp-action="VoegToe">Zet in winkelmandje</a></td>
+                </tr>
+            }
+
+        </table>
+
+        <p><a asp-action="Winkelmandje"> Bekijk de inhoud van het winkelmandje</a></p>
+
+
+
+    </form>
+
+
+</body>
+</html>
